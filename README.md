@@ -20,9 +20,8 @@ Computer Vision Center (CVC), Universitat Autònoma de Barcelona (UAB), Spain
 
 ## About the project
 
-SKUNet is a U-Net-based semantic segmentation model for land-cover classification using multispectral remote sensing imagery. It replaces the conventional U-Net encoder with a pretrained **SK-ResNeXt50**, combining the multi-path representation capacity of ResNeXt with the adaptive receptive fields of Selective Kernel convolutions.
+SKUNet is a U-Net-based semantic segmentation model for land-cover classification using multispectral remote sensing imagery. It enhances the conventional U-Net architecture with a **Selective Kernel ResNeXt50** encoder, combining the multi-path representation capacity of ResNeXt with adaptive receptive fields that dynamically capture features at different spatial scales. This design improves multiscale feature extraction while preserving the spatial reconstruction capabilities of the U-Net decoder. The model supports multiband inputs and is evaluated on the Five-Billion-Pixels dataset, which contains 24 land-cover classes on RGB, RG-NIR, and RGB-NIR configurations.
 
-This design improves multiscale feature extraction while preserving the spatial reconstruction capabilities of the U-Net decoder. The model supports RGB, RG-NIR, and RGB-NIR inputs and is evaluated on the Five-Billion-Pixels dataset, which contains 24 land-cover classes.
 
 ## Installation
 
@@ -42,8 +41,6 @@ model = SKUNet(
     num_classes=24,
 )
 ```
-
-The model uses the pretrained SK-ResNeXt50 encoder and the configuration reported in the paper. The number of input channels and output classes can be adapted to the target dataset.
 
 ## Input and output
 
@@ -80,19 +77,19 @@ The original large tiles are cropped into non-overlapping `256 x 256` patches. T
 
 ## Main results
 
-The following table reports the central comparison from the paper. The proposed U-Net with SK-ResNeXt50 is evaluated against U-Net and other representative segmentation architectures under the three spectral configurations.
+The following table reports the central comparison from the paper. SKUNet is evaluated against U-Net and other representative segmentation architectures under the three spectral configurations.
 
-| Model | Encoder | Band combination | OA (%) | mIoU (%) | Training time (h) | Inference time (s) |
-|------|------|------|------:|------:|------:|------:|
-| U-Net | SK-ResNeXt50 | RGB | 79.010 | 53.161 | 4.129 | 0.010 |
-| U-Net | SK-ResNeXt50 | RG-NIR | 79.533 | 53.255 | 4.066 | 0.010 |
-| **U-Net** | **SK-ResNeXt50** | **RGB-NIR** | **80.561** | **54.394** | **4.283** | **0.011** |
-| U-Net | - | RGB | 75.025 | 48.814 | 3.602 | 0.003 |
-| U-Net | - | RG-NIR | 74.380 | 49.800 | 3.890 | 0.003 |
-| U-Net | - | RGB-NIR | 76.106 | 50.461 | 4.465 | 0.003 |
-| DeepLabV3+ | ResNet50 | RGB-NIR | 79.970 | 54.008 | 3.473 | 0.006 |
-| DeepLabV3 | ResNet50 | RGB | 79.940 | 54.106 | 4.308 | 0.006 |
-| SegFormer | - | RGB-NIR | 72.794 | 44.264 | 2.976 | 0.013 |
+| Model | Band combination | OA (%) | mIoU (%) | Training time (h) | Inference time (s) |
+|------|------|------:|------:|------:|------:|
+| **SKUNet** | **RGB** | **79.010** | **53.161** | 4.129 | 0.010 |
+| **SKUNet** | **RG-NIR** | **79.533** | **53.255** | 4.066 | 0.010 |
+| **SKUNet** | **RGB-NIR** | **80.561** | **54.394** | **4.283** | **0.011** |
+| U-Net | RGB | 75.025 | 48.814 | 3.602 | 0.003 |
+| U-Net | RG-NIR | 74.380 | 49.800 | 3.890 | 0.003 |
+| U-Net | RGB-NIR | 76.106 | 50.461 | 4.465 | 0.003 |
+| DeepLabV3+ | RGB-NIR | 79.970 | 54.008 | 3.473 | 0.006 |
+| DeepLabV3 | RGB | 79.940 | 54.106 | 4.308 | 0.006 |
+| SegFormer | RGB-NIR | 72.794 | 44.264 | 2.976 | 0.013 |
 
 The RGB-NIR configuration achieves the best overall performance for SKUNet, with an OA of **80.561%** and an mIoU of **54.394%**. Compared with vanilla U-Net, it improves OA by **5.854 percentage points** and mIoU by **7.794 percentage points**.
 
@@ -106,20 +103,21 @@ The RGB-NIR configuration achieves the best overall performance for SKUNet, with
 
 ## Citation
 
-If you find this work useful, please cite:
+If you find this work useful, please star ⭐️⭐️⭐️ our repository and cite our paper:
 
 ```bibtex
 @article{ramos2025leveraging,
-    author  = {Ramos, Leo Thomas and Sappa, Angel D.},
-    title   = {Leveraging U-Net and selective feature extraction for land cover classification using remote sensing imagery},
+    title = {Leveraging U-Net and selective feature extraction for land cover classification using remote sensing imagery},
+    volume = {15},
+    number = {1},
     journal = {Scientific Reports},
-    volume  = {15},
-    pages   = {784},
-    year    = {2025},
-    doi     = {10.1038/s41598-024-84795-1}
+    author = {Ramos, Leo Thomas and Sappa, Angel D.},
+    year = {2025},
+    pages = {784},
+    doi = {10.1038/s41598-024-84795-1}
 }
 ```
 
 ## License
 
-This repository follows the license specified by its authors.
+Distributed under the GNU General Public License v3.0. See `LICENSE` for more information.
