@@ -78,8 +78,6 @@ The original large tiles are cropped into non-overlapping `256 x 256` patches. T
 
 ## Main results
 
-The following table reports the central comparison from the paper. SKUNet is evaluated against U-Net and other representative segmentation architectures under the three spectral configurations.
-
 | Model | Band combination | OA (%) | mIoU (%) | Training time (h) | Inference time (s) |
 |------|------|------:|------:|------:|------:|
 | **SKUNet** | **RGB** | **79.010** | **53.161** | 4.129 | 0.010 |
@@ -91,8 +89,6 @@ The following table reports the central comparison from the paper. SKUNet is eva
 | DeepLabV3+ | RGB-NIR | 79.970 | 54.008 | 3.473 | 0.006 |
 | DeepLabV3 | RGB | 79.940 | 54.106 | 4.308 | 0.006 |
 | SegFormer | RGB-NIR | 72.794 | 44.264 | 2.976 | 0.013 |
-
-The RGB-NIR configuration achieves the best overall performance for SKUNet, with an OA of **80.561%** and an mIoU of **54.394%**. Compared with vanilla U-Net, it improves OA by **5.854 percentage points** and mIoU by **7.794 percentage points**.
 
 ## Why SKUNet
 
