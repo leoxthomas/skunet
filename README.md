@@ -16,7 +16,7 @@ Computer Vision Center (CVC), Universitat Autònoma de Barcelona (UAB), Spain
 ## Announcements
 
 - Official implementation and model code are available
-- The SKUNet paper is available in [here](https://doi.org/10.1038/s41598-024-84795-1)
+- The SKUNet paper is available [here](https://doi.org/10.1038/s41598-024-84795-1)
 - SKUNet has been accepted in Scientific Reports
 
 ## About the project
